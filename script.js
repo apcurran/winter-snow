@@ -63,7 +63,7 @@ const anim = (() => {
 
     function init() {
         totalFlakes = [];
-        const flakes = window.innerWidth / 2;
+        const flakes = Math.floor(window.innerWidth / 3);
 
         for (let i = 0; i < flakes; i++) {
             let x = randomNum(0, window.innerWidth, true);
