@@ -2,6 +2,8 @@
 
 ## Features:
 
+[Link](https://apcurran.github.io/winter-snow/)
+
 * Vanilla JS with Canvas API
 
 * ES6 Class syntax for snowflake objects
