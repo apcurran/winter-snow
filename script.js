@@ -13,7 +13,6 @@ const anim = (() => {
             this.dx = dx;
             this.dy = dy;
             this.radius = radius;
-            this.color = "#fff";
             this.alpha = alpha;
         }
 
@@ -28,7 +27,7 @@ const anim = (() => {
 
         draw() {
             ctx.save();
-            ctx.fillStyle = this.color;
+            ctx.fillStyle = "#fff";
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
             ctx.closePath();
