@@ -4,7 +4,8 @@ const anim = (() => {
     const canvas = document.getElementById("canvas");
     canvas.width = document.documentElement.clientWidth;
     canvas.height = document.documentElement.clientHeight;
-    const ctx = canvas.getContext("2d", { alpha: false });
+    /** @type {CanvasRenderingContext2D} */
+    const ctx = canvas.getContext("2d", { alpha: true });
 
     class Flake {
         constructor(x, y, dx, dy, radius, alpha) {
@@ -26,14 +27,12 @@ const anim = (() => {
         }
 
         draw() {
-            ctx.save();
             ctx.fillStyle = "#fff";
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
             ctx.closePath();
             ctx.globalAlpha = this.alpha;
             ctx.fill();
-            ctx.restore();
         }
 
         update() {
@@ -80,13 +79,11 @@ const anim = (() => {
     
     (function animate() {
         requestAnimationFrame(animate);
-        ctx.fillStyle = "#2A4365"; // Dark blue bg clr
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         for (let i = 0; i < totalFlakes.length; i++) {
             totalFlakes[i].update();
         }
-        
     })();
     
     function resize() {
