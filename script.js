@@ -7,9 +7,6 @@
     /** @type {CanvasRenderingContext2D} */
     const ctx = canvas.getContext("2d", { alpha: true });
 
-    // Cache window height after init runs, to use during update() in animation loop
-    let viewWindowHeight;
-
     class Flake {
         constructor(x, y, dx, dy, radius, alpha) {
             this.x = x;
@@ -19,7 +16,7 @@
             this.radius = radius;
             this.alpha = alpha;
         }
-
+        
         reset() {
             this.x = randomNum(0, window.innerWidth, true);
             this.y = randomNum(0, -window.innerHeight, true);
@@ -28,7 +25,7 @@
             this.radius = randomNum(1, 4, true);
             this.alpha = randomNum(0.1, 0.9, false);
         }
-
+        
         draw() {
             ctx.fillStyle = "#fff";
             ctx.beginPath();
@@ -37,19 +34,19 @@
             ctx.globalAlpha = this.alpha;
             ctx.fill();
         }
-
+        
         update() {
             this.x += this.dx;
             this.y += this.dy;
-
+            
             if (this.y + this.radius > viewWindowHeight) {
                 this.reset();
             }
-
+            
             this.draw();
         }
     }
-
+    
     
     function randomNum(min, max, boolean) {
         if (boolean === false) {
@@ -60,14 +57,16 @@
         return Math.floor(min + Math.random() * (max - min));
     }
     
+    // Cache window height after init runs, to use during update() in animation loop
+    let viewWindowHeight;
     let totalFlakes;
-
+    
     function init() {
         // Re-calc window height and re-assign to var
         viewWindowHeight = window.innerHeight;
         // Reset and re-fill totalFlakes arr
         totalFlakes = [];
-
+        
         const flakes = Math.floor(window.innerWidth / 3);
 
         for (let i = 0; i < flakes; i++) {
