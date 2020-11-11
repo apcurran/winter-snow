@@ -1,6 +1,6 @@
 "use strict";
 
-const anim = (() => {
+{
     const canvas = document.getElementById("canvas");
     canvas.width = document.documentElement.clientWidth;
     canvas.height = document.documentElement.clientHeight;
@@ -94,4 +94,4 @@ const anim = (() => {
     }
 
     window.onresize = resize; // Only call func on resize event
-})();
+}
