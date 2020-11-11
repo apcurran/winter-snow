@@ -73,7 +73,7 @@
 
             totalFlakes.push(new Flake(x, y, dx, dy, radius, alpha));
         }
-    };
+    }
 
     init();
     
