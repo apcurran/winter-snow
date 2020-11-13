@@ -20,7 +20,7 @@
         reset() {
             this.x = randomNum(0, window.innerWidth, true);
             this.y = randomNum(0, -window.innerHeight, true);
-            this.dx = randomNum(-3, 3, true);
+            this.dx = randomNum(-2, 2, true);
             this.dy = randomNum(2, 5, true);
             this.radius = randomNum(1, 4, true);
             this.alpha = randomNum(0.1, 0.9, false);
@@ -72,7 +72,7 @@
         for (let i = 0; i < flakes; i++) {
             let x = randomNum(0, window.innerWidth, true);
             let y = randomNum(0, -window.innerHeight, true);
-            let dx = randomNum(-3, 3, true);
+            let dx = randomNum(-2, 2, true);
             let dy = randomNum(2, 5, true);
             let radius = randomNum(1, 4, true);
             let alpha = randomNum(0.1, 0.9, false).toFixed(4);
