@@ -27,9 +27,8 @@
         }
         
         draw() {
-            ctx.fillStyle = "#fff";
             ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.globalAlpha = this.alpha;
             ctx.fill();
@@ -66,6 +65,8 @@
         viewWindowHeight = window.innerHeight;
         // Reset and re-fill totalFlakes arr
         totalFlakes = [];
+        // Reset initial ctx state
+        ctx.fillStyle = "#fff";
         
         const flakes = Math.floor(window.innerWidth / 3);
 
