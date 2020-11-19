@@ -22,7 +22,6 @@
             this.dx = randomNum(-2, 2, true);
             this.dy = randomNum(2, 5, true);
             this.radius = randomNum(1, 4, true);
-            this.alpha = randomNum(0.1, 0.9, false);
         }
         
         draw() {
