@@ -8,13 +8,12 @@
     const ctx = canvas.getContext("2d", { alpha: true });
 
     class Flake {
-        constructor(x, y, dx, dy, radius, alpha) {
+        constructor(x, y, dx, dy, radius) {
             this.x = x;
             this.y = y;
             this.dx = dx;
             this.dy = dy;
             this.radius = radius;
-            this.alpha = alpha;
         }
         
         reset() {
@@ -27,11 +26,8 @@
         }
         
         draw() {
-            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-            ctx.closePath();
-            ctx.globalAlpha = this.alpha;
-            ctx.fill();
         }
         
         update() {
@@ -67,6 +63,7 @@
         totalFlakes = [];
         // Reset initial ctx state
         ctx.fillStyle = "#fff";
+        ctx.globalAlpha = "0.7";
         
         const flakes = Math.floor(window.innerWidth / 3);
 
@@ -76,9 +73,8 @@
             let dx = randomNum(-2, 2, true);
             let dy = randomNum(2, 5, true);
             let radius = randomNum(1, 4, true);
-            let alpha = randomNum(0.1, 0.9, false).toFixed(4);
 
-            totalFlakes.push(new Flake(x, y, dx, dy, radius, alpha));
+            totalFlakes.push(new Flake(x, y, dx, dy, radius));
         }
     }
 
@@ -88,9 +84,16 @@
         requestAnimationFrame(animate);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
+        // Begin path
+        ctx.beginPath();
+
         for (let i = 0; i < totalFlakes.length; i++) {
+            // Update and trace all flakes in one batch.
             totalFlakes[i].update();
         }
+
+        // Call fill() only after batch tracing all flakes.
+        ctx.fill();
     })();
     
     function resize() {
