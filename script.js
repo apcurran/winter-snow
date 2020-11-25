@@ -2,10 +2,11 @@
 
 {
     const canvas = document.getElementById("canvas");
-    canvas.width = document.documentElement.clientWidth;
-    canvas.height = document.documentElement.clientHeight;
     /** @type {CanvasRenderingContext2D} */
     const ctx = canvas.getContext("2d", { alpha: true });
+
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
 
     class Flake {
         constructor(x, y, dx, dy, radius) {
@@ -32,7 +33,7 @@
         update() {
             this.x += this.dx;
             this.y += this.dy;
-            
+
             if (this.y + this.radius > viewWindowHeight) {
                 this.reset();
             }
@@ -40,7 +41,6 @@
             this.draw();
         }
     }
-    
     
     function randomNum(min, max, boolean) {
         if (boolean === false) {
@@ -102,5 +102,5 @@
         init();
     }
 
-    window.onresize = resize; // Only call func on resize event
+    window.onresize = resize; // Only call func on resize event.
 }
