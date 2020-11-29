@@ -1,7 +1,8 @@
 "use strict";
 
 {
-    const canvas = document.getElementById("canvas");
+    const canvas = HTMLCanvasElement.prototype.transferControlToOffscreen ? document.getElementById("canvas").transferControlToOffscreen() : document.getElementById("canvas");
+    console.log(canvas);
     /** @type {CanvasRenderingContext2D} */
     const ctx = canvas.getContext("2d", { alpha: true });
 
