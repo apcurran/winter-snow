@@ -37,8 +37,6 @@
             if (this.y + this.radius > viewWindowHeight) {
                 this.reset();
             }
-            
-            this.draw();
         }
     }
     
@@ -89,6 +87,7 @@
         for (let i = 0; i < totalFlakes.length; i++) {
             // Update and trace all flakes in one batch.
             totalFlakes[i].update();
+            totalFlakes[i].draw();
         }
 
         // Call fill() only after batch tracing all flakes.
