@@ -18,8 +18,8 @@
         }
         
         reset() {
-            this.x = randomNum(0, window.innerWidth, true);
-            this.y = randomNum(0, -window.innerHeight, true);
+            this.x = randomNum(0, windowDimensions.width, true);
+            this.y = randomNum(0, -windowDimensions.height, true);
             this.dx = randomNum(-2, 2, false);
             this.dy = randomNum(2, 5, false);
             this.radius = randomNum(1, 4, true);
@@ -34,7 +34,7 @@
             this.x += this.dx;
             this.y += this.dy;
 
-            if (this.y + this.radius > viewWindowHeight) {
+            if (this.y + this.radius > windowDimensions.height) {
                 this.reset();
             }
         }
@@ -50,23 +50,27 @@
     }
     
     // Cache window height after init runs, to use during update() in animation loop
-    let viewWindowHeight;
+    let windowDimensions = {
+        width: null,
+        height: null
+    };
     let totalFlakes;
     
     function init() {
         // Re-calc window height and re-assign to var
-        viewWindowHeight = window.innerHeight;
+        windowDimensions.width = window.innerWidth;
+        windowDimensions.height = window.innerHeight;
         // Reset and re-fill totalFlakes arr
         totalFlakes = [];
         // Reset initial ctx state
         ctx.fillStyle = "#fff";
         ctx.globalAlpha = "0.7";
         
-        const flakes = Math.floor(window.innerWidth / 3);
+        const flakes = Math.floor(windowDimensions.width / 3);
 
         for (let i = 0; i < flakes; i++) {
-            let x = randomNum(0, window.innerWidth, true);
-            let y = randomNum(0, -window.innerHeight, true);
+            let x = randomNum(0, windowDimensions.width, true);
+            let y = randomNum(0, -windowDimensions.height, true);
             let dx = randomNum(-2, 2, false);
             let dy = randomNum(2, 5, false);
             let radius = randomNum(1, 4, true);
