@@ -57,7 +57,7 @@
     let totalFlakes;
     
     function init() {
-        // Re-calc window height and re-assign to var
+        // Re-calc window width and height, then re-assign to var
         windowDimensions.width = window.innerWidth;
         windowDimensions.height = window.innerHeight;
         // Reset and re-fill totalFlakes arr
