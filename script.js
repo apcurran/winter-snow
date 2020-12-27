@@ -18,8 +18,8 @@
         }
         
         reset() {
-            this.x = randomNum(0, windowDimensions.width, true);
-            this.y = randomNum(0, -windowDimensions.height, true);
+            this.x = randomNum(0, canvasDimensions.width, true);
+            this.y = randomNum(0, -canvasDimensions.height, true);
             this.radius = randomNum(1, 4, true);
             this.dx = randomNum(-2, 2, false);
             this.dy = randomNum(2, 5, false);
@@ -34,7 +34,7 @@
             this.x += this.dx;
             this.y += this.dy;
 
-            if (this.y + this.radius > windowDimensions.height) {
+            if (this.y + this.radius > canvasDimensions.height) {
                 this.reset();
             }
         }
@@ -50,7 +50,7 @@
     }
     
     // Cache width and height after init runs, to use during update() in animation loop
-    let windowDimensions = {
+    let canvasDimensions = {
         width: null,
         height: null
     };
@@ -58,19 +58,19 @@
     
     function init() {
         // Re-calc window width and height, then re-assign val
-        windowDimensions.width = canvas.width;
-        windowDimensions.height = canvas.height;
+        canvasDimensions.width = canvas.width;
+        canvasDimensions.height = canvas.height;
         // Reset and re-fill totalFlakes arr
         totalFlakes = [];
         // Reset initial ctx state
         ctx.fillStyle = "#fff";
         ctx.globalAlpha = "0.7";
         
-        const flakes = Math.floor(windowDimensions.width / 3);
+        const flakes = Math.floor(canvasDimensions.width / 3);
 
         for (let i = 0; i < flakes; i++) {
-            let x = randomNum(0, windowDimensions.width, true);
-            let y = randomNum(0, -windowDimensions.height, true);
+            let x = randomNum(0, canvasDimensions.width, true);
+            let y = randomNum(0, -canvasDimensions.height, true);
             let radius = randomNum(1, 4, true);
             let dx = randomNum(-2, 2, false);
             let dy = randomNum(2, 5, false);
