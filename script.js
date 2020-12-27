@@ -20,9 +20,9 @@
         reset() {
             this.x = randomNum(0, windowDimensions.width, true);
             this.y = randomNum(0, -windowDimensions.height, true);
+            this.radius = randomNum(1, 4, true);
             this.dx = randomNum(-2, 2, false);
             this.dy = randomNum(2, 5, false);
-            this.radius = randomNum(1, 4, true);
         }
         
         draw() {
@@ -58,8 +58,8 @@
     
     function init() {
         // Re-calc window width and height, then re-assign to var
-        windowDimensions.width = window.innerWidth;
-        windowDimensions.height = window.innerHeight;
+        windowDimensions.width = canvas.width;
+        windowDimensions.height = canvas.height;
         // Reset and re-fill totalFlakes arr
         totalFlakes = [];
         // Reset initial ctx state
