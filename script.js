@@ -9,12 +9,12 @@
     canvas.height = document.documentElement.clientHeight;
 
     class Flake {
-        constructor(x, y, dx, dy, radius) {
+        constructor(x, y, radius, dx, dy) {
             this.x = x;
             this.y = y;
+            this.radius = radius;
             this.dx = dx;
             this.dy = dy;
-            this.radius = radius;
         }
         
         reset() {
@@ -71,11 +71,11 @@
         for (let i = 0; i < flakes; i++) {
             let x = randomNum(0, windowDimensions.width, true);
             let y = randomNum(0, -windowDimensions.height, true);
+            let radius = randomNum(1, 4, true);
             let dx = randomNum(-2, 2, false);
             let dy = randomNum(2, 5, false);
-            let radius = randomNum(1, 4, true);
 
-            totalFlakes.push(new Flake(x, y, dx, dy, radius));
+            totalFlakes.push(new Flake(x, y, radius, dx, dy));
         }
     }
 
