@@ -49,7 +49,7 @@
         return Math.floor(min + Math.random() * (max - min));
     }
     
-    // Cache window height after init runs, to use during update() in animation loop
+    // Cache width and height after init runs, to use during update() in animation loop
     let windowDimensions = {
         width: null,
         height: null
@@ -57,7 +57,7 @@
     let totalFlakes;
     
     function init() {
-        // Re-calc window width and height, then re-assign to var
+        // Re-calc window width and height, then re-assign val
         windowDimensions.width = canvas.width;
         windowDimensions.height = canvas.height;
         // Reset and re-fill totalFlakes arr
@@ -105,5 +105,5 @@
         init();
     }
 
-    window.onresize = resize; // Only call func on resize event.
+    window.onresize = resize;
 }
