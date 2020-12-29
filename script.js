@@ -49,7 +49,7 @@
         return Math.floor(min + Math.random() * (max - min));
     }
     
-    // Cache width and height after init runs, to use during update() in animation loop
+    // Cache width and height after init runs, to use during clearRect() and update() in animation loop
     let canvasDimensionWidth;
     let canvasDimensionHeight;
     let totalFlakes;
