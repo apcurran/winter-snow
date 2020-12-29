@@ -18,8 +18,8 @@
         }
         
         reset() {
-            this.x = randomNum(0, canvasDimensions.width, true);
-            this.y = randomNum(0, -canvasDimensions.height, true);
+            this.x = randomNum(0, canvasDimensionWidth, true);
+            this.y = randomNum(0, -canvasDimensionHeight, true);
             this.radius = randomNum(1, 4, true);
             this.dx = randomNum(-2, 2, false);
             this.dy = randomNum(2, 5, false);
@@ -34,7 +34,7 @@
             this.x += this.dx;
             this.y += this.dy;
 
-            if (this.y + this.radius > canvasDimensions.height) {
+            if (this.y + this.radius > canvasDimensionHeight) {
                 this.reset();
             }
         }
@@ -50,27 +50,25 @@
     }
     
     // Cache width and height after init runs, to use during update() in animation loop
-    let canvasDimensions = {
-        width: null,
-        height: null
-    };
+    let canvasDimensionWidth;
+    let canvasDimensionHeight;
     let totalFlakes;
     
     function init() {
-        // Re-calc window width and height, then re-assign val
-        canvasDimensions.width = canvas.width;
-        canvasDimensions.height = canvas.height;
+        // Re-calc window width and height, then re-assign vals
+        canvasDimensionWidth = canvas.width;
+        canvasDimensionHeight = canvas.height;
         // Reset and re-fill totalFlakes arr
         totalFlakes = [];
         // Reset initial ctx state
         ctx.fillStyle = "#fff";
         ctx.globalAlpha = "0.7";
         
-        const flakes = Math.floor(canvasDimensions.width / 3);
+        const flakes = Math.floor(canvasDimensionWidth / 3);
 
         for (let i = 0; i < flakes; i++) {
-            let x = randomNum(0, canvasDimensions.width, true);
-            let y = randomNum(0, -canvasDimensions.height, true);
+            let x = randomNum(0, canvasDimensionWidth, true);
+            let y = randomNum(0, -canvasDimensionHeight, true);
             let radius = randomNum(1, 4, true);
             let dx = randomNum(-2, 2, false);
             let dy = randomNum(2, 5, false);
@@ -83,7 +81,7 @@
     
     (function animate() {
         requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvasDimensionWidth, canvasDimensionHeight);
         
         // Begin path
         ctx.beginPath();
