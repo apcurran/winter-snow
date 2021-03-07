@@ -41,10 +41,10 @@
     
     function randomNum(min, max, boolean) {
         if (boolean === false) {
-            // Calculate float
+            // Calc float
             return min + Math.random() * (max - min);
         }
-        // Calculate int
+        // Calc int
         return Math.floor(min + Math.random() * (max - min));
     }
     
