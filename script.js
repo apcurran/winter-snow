@@ -5,9 +5,6 @@
     /** @type {CanvasRenderingContext2D} */
     const ctx = canvas.getContext("2d", { alpha: true });
 
-    canvas.width = document.documentElement.clientWidth;
-    canvas.height = document.documentElement.clientHeight;
-
     class Flake {
         constructor(x, y, radius, dx, dy) {
             this.x = x;
@@ -18,8 +15,10 @@
         }
         
         reset() {
-            this.x = randomNum(0, canvasDimensionWidth, true);
-            this.y = randomNum(0, -canvasDimensionHeight, true);
+            // typedCanvasDimensionsArr[0] is canvas width
+            // typedCanvasDimensionsArr[1] is canvas height
+            this.x = randomNum(0, typedCanvasDimensionsArr[0], true);
+            this.y = randomNum(0, -typedCanvasDimensionsArr[1], true);
             this.radius = randomNum(1, 4, true);
             this.dx = randomNum(-2, 2, false);
             this.dy = randomNum(2, 5, false);
@@ -34,7 +33,7 @@
             this.x += this.dx;
             this.y += this.dy;
 
-            if (this.y + this.radius > canvasDimensionHeight) {
+            if (this.y + this.radius > typedCanvasDimensionsArr[1]) {
                 this.reset();
             }
         }
@@ -50,25 +49,25 @@
     }
     
     // Cache width and height after init runs, to use during clearRect() and update() in animation loop
-    let canvasDimensionWidth;
-    let canvasDimensionHeight;
+    // Array of [canvasWidth, canvasHeight]
+    let typedCanvasDimensionsArr;
     let totalFlakes;
     
     function init() {
-        // Re-calc window width and height, then re-assign vals
-        canvasDimensionWidth = canvas.width;
-        canvasDimensionHeight = canvas.height;
+        // Re-calc canvas width and height, then re-assign vals
+        resizeCanvas();
+
         // Reset and re-fill totalFlakes arr
         totalFlakes = [];
         // Reset initial ctx state
         ctx.fillStyle = "#fff";
         ctx.globalAlpha = "0.7";
         
-        const flakes = Math.floor(canvasDimensionWidth / 3);
+        const flakes = Math.floor(typedCanvasDimensionsArr[0] / 3);
 
         for (let i = 0; i < flakes; i++) {
-            let x = randomNum(0, canvasDimensionWidth, true);
-            let y = randomNum(0, -canvasDimensionHeight, true);
+            let x = randomNum(0, typedCanvasDimensionsArr[0], true);
+            let y = randomNum(0, -typedCanvasDimensionsArr[1], true);
             let radius = randomNum(1, 4, true);
             let dx = randomNum(-2, 2, false);
             let dy = randomNum(2, 5, false);
@@ -81,7 +80,7 @@
     
     (function animate() {
         requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, canvasDimensionWidth, canvasDimensionHeight);
+        ctx.clearRect(0, 0, typedCanvasDimensionsArr[0], typedCanvasDimensionsArr[1]);
         
         // Begin path
         ctx.beginPath();
@@ -96,12 +95,14 @@
         ctx.fill();
     })();
     
-    function resize() {
+    function resizeCanvas() {
+        // Re-size canvas
         canvas.width = document.documentElement.clientWidth;
         canvas.height = document.documentElement.clientHeight;
 
-        init();
+        // Re-cache canvas dimensions in typed array
+        typedCanvasDimensionsArr = new Uint16Array([canvas.width, canvas.height]);
     }
 
-    window.onresize = resize;
+    window.onresize = init;
 }
