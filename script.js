@@ -5,15 +5,7 @@
     /** @type {CanvasRenderingContext2D} */
     const ctx = canvas.getContext("2d", { alpha: true });
 
-    class Flake {
-        constructor(x, y, radius, dx, dy) {
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.dx = dx;
-            this.dy = dy;
-        }
-        
+    const Flake = {
         reset() {
             // typedCanvasDimensionsArr[0] is canvas width
             // typedCanvasDimensionsArr[1] is canvas height
@@ -22,12 +14,12 @@
             this.radius = randomNum(1, 4, true);
             this.dx = randomNum(-2, 2, false);
             this.dy = randomNum(2, 5, false);
-        }
+        },
         
         draw() {
             ctx.moveTo(this.x, this.y);
             ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
-        }
+        },
         
         update() {
             this.x += this.dx;
@@ -37,7 +29,7 @@
                 this.reset();
             }
         }
-    }
+    };
     
     function randomNum(min, max, boolean) {
         if (boolean === false) {
@@ -72,7 +64,40 @@
             let dx = randomNum(-2, 2, false);
             let dy = randomNum(2, 5, false);
 
-            totalFlakes.push(new Flake(x, y, radius, dx, dy));
+            const flakePropertiesObj = {
+                x: {
+                    value: x,
+                    writable: true,
+                    enumerable: true,
+                    configurable: true
+                },
+                y: {
+                    value: y,
+                    writable: true,
+                    enumerable: true,
+                    configurable: true
+                },
+                radius: {
+                    value: radius,
+                    writable: true,
+                    enumerable: true,
+                    configurable: true
+                },
+                dx: {
+                    value: dx,
+                    writable: true,
+                    enumerable: true,
+                    configurable: true
+                },
+                dy: {
+                    value: dy,
+                    writable: true,
+                    enumerable: true,
+                    configurable: true
+                },
+            };
+
+            totalFlakes.push(Object.create(Flake, flakePropertiesObj));
         }
     }
 
