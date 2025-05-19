@@ -1,4 +1,4 @@
-import { getRandomNum } from "./modules/utils.js";
+import { getRandomNum } from "../modules/utils.js";
 
 const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById("canvas"));
 
