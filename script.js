@@ -18,8 +18,6 @@ class Flake {
     }
     
     reset() {
-        // canvasDimensionsWidth is canvas width
-        // canvasDimensionsHeight is canvas height
         this.x = randomNum(0, canvasDimensionsWidth, true);
         this.y = randomNum(0, -canvasDimensionsHeight, true);
         this.radius = randomNum(1, 4, true);
