@@ -75,9 +75,7 @@ function init() {
     }
 }
 
-init();
-
-(function animate() {
+function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, typedCanvasDimensionsArr[0], typedCanvasDimensionsArr[1]);
     
@@ -92,7 +90,7 @@ init();
 
     // Call fill() only after batch tracing all flakes.
     ctx.fill();
-})();
+}
 
 function resizeCanvas() {
     // Re-size canvas
@@ -102,5 +100,8 @@ function resizeCanvas() {
     // Re-cache canvas dimensions in typed array
     typedCanvasDimensionsArr = new Uint16Array([canvas.width, canvas.height]);
 }
+
+init();
+animate();
 
 window.onresize = init;
