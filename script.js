@@ -68,7 +68,7 @@ function init() {
     totalFlakes = [];
     // Reset initial ctx state
     ctx.fillStyle = "#fff";
-    ctx.globalAlpha = "0.7";
+    ctx.globalAlpha = 0.7;
     
     const flakes = Math.floor(canvasDimensionsWidth / 3);
 
