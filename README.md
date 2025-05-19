@@ -2,7 +2,9 @@
 
 ## Features:
 
-[Link](https://apcurran.github.io/winter-snow/)
+[Array of structures approach to data-design](https://apcurran.github.io/winter-snow/data-array-of-structures-example)
+
+[Structure of arrays approach to data-design](https://apcurran.github.io/winter-snow/data-structure-of-arrays-example)
 
 * Vanilla JS with Canvas API
 
