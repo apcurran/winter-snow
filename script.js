@@ -9,6 +9,13 @@ if (!canvas) {
 const ctx = canvas.getContext("2d", { alpha: true });
 
 class Flake {
+    /**
+     * @param {number} x 
+     * @param {number} y 
+     * @param {number} radius 
+     * @param {number} dx 
+     * @param {number} dy 
+     */
     constructor(x, y, radius, dx, dy) {
         this.x = x;
         this.y = y;
