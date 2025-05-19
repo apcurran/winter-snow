@@ -1,4 +1,4 @@
-"use strict";
+import { getRandomNum } from "./modules/utils.js";
 
 const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById("canvas"));
 
@@ -38,21 +38,6 @@ class Flake {
             this.reset();
         }
     }
-}
-
-/**
- * @param {number} min 
- * @param {number} max 
- * @param {boolean} boolean 
- * @returns {number}
- */
-function getRandomNum(min, max, boolean) {
-    if (boolean === false) {
-        // Calc float
-        return min + Math.random() * (max - min);
-    }
-    // Calc int
-    return Math.floor(min + Math.random() * (max - min));
 }
 
 // Cache width and height after init runs, to use during clearRect() and update() in animation loop
