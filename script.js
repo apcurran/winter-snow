@@ -1,7 +1,11 @@
 "use strict";
 
-const canvas = document.getElementById("canvas");
-/** @type {CanvasRenderingContext2D} */
+const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById("canvas"));
+
+if (!canvas) {
+    throw new Error("Could not find canvas element in the DOM.");
+}
+
 const ctx = canvas.getContext("2d", { alpha: true });
 
 class Flake {
