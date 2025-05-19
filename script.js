@@ -18,11 +18,11 @@ class Flake {
     }
     
     reset() {
-        this.x = randomNum(0, canvasDimensionsWidth, true);
-        this.y = randomNum(0, -canvasDimensionsHeight, true);
-        this.radius = randomNum(1, 4, true);
-        this.dx = randomNum(-2, 2, false);
-        this.dy = randomNum(2, 5, false);
+        this.x = getRandomNum(0, canvasDimensionsWidth, true);
+        this.y = getRandomNum(0, -canvasDimensionsHeight, true);
+        this.radius = getRandomNum(1, 4, true);
+        this.dx = getRandomNum(-2, 2, false);
+        this.dy = getRandomNum(2, 5, false);
     }
     
     draw() {
@@ -40,7 +40,13 @@ class Flake {
     }
 }
 
-function randomNum(min, max, boolean) {
+/**
+ * @param {number} min 
+ * @param {number} max 
+ * @param {boolean} boolean 
+ * @returns {number}
+ */
+function getRandomNum(min, max, boolean) {
     if (boolean === false) {
         // Calc float
         return min + Math.random() * (max - min);
@@ -67,11 +73,11 @@ function init() {
     const flakes = Math.floor(canvasDimensionsWidth / 3);
 
     for (let i = 0; i < flakes; i++) {
-        let x = randomNum(0, canvasDimensionsWidth, true);
-        let y = randomNum(0, -canvasDimensionsHeight, true);
-        let radius = randomNum(1, 4, true);
-        let dx = randomNum(-2, 2, false);
-        let dy = randomNum(2, 5, false);
+        let x = getRandomNum(0, canvasDimensionsWidth, true);
+        let y = getRandomNum(0, -canvasDimensionsHeight, true);
+        let radius = getRandomNum(1, 4, true);
+        let dx = getRandomNum(-2, 2, false);
+        let dy = getRandomNum(2, 5, false);
 
         totalFlakes.push(new Flake(x, y, radius, dx, dy));
     }
