@@ -1,4 +1,4 @@
-import { getRandomNum } from "../modules/utils.js";
+import { getRandomInt, getRandomFloat } from "../modules/utils.js";
 
 const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById("canvas"));
 
@@ -25,11 +25,11 @@ class Flake {
     }
     
     reset() {
-        this.x = getRandomNum(0, canvasDimensionsWidth, true);
-        this.y = getRandomNum(0, -canvasDimensionsHeight, true);
-        this.radius = getRandomNum(1, 4, true);
-        this.dx = getRandomNum(-2, 2, false);
-        this.dy = getRandomNum(2, 5, false);
+        this.x = getRandomInt(0, canvasDimensionsWidth);
+        this.y = getRandomInt(0, -canvasDimensionsHeight);
+        this.radius = getRandomInt(1, 4);
+        this.dx = getRandomFloat(-2, 2);
+        this.dy = getRandomFloat(2, 5);
     }
     
     draw() {
@@ -65,11 +65,11 @@ function init() {
     const flakes = Math.floor(canvasDimensionsWidth / 3);
 
     for (let i = 0; i < flakes; i++) {
-        let x = getRandomNum(0, canvasDimensionsWidth, true);
-        let y = getRandomNum(0, -canvasDimensionsHeight, true);
-        let radius = getRandomNum(1, 4, true);
-        let dx = getRandomNum(-2, 2, false);
-        let dy = getRandomNum(2, 5, false);
+        let x = getRandomInt(0, canvasDimensionsWidth);
+        let y = getRandomInt(0, -canvasDimensionsHeight);
+        let radius = getRandomInt(1, 4);
+        let dx = getRandomFloat(-2, 2);
+        let dy = getRandomFloat(2, 5);
 
         totalFlakes.push(new Flake(x, y, radius, dx, dy));
     }
