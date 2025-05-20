@@ -1,4 +1,4 @@
-import { getRandomInt, getRandomFloat } from "../modules/utils.js";
+import { getRandomInt, getRandomFloat, resizeCanvas } from "../modules/utils.js";
 
 const canvas = /** @type {HTMLCanvasElement | null} */ (document.getElementById("canvas"));
 
@@ -28,15 +28,6 @@ function animate() {
 
     // Call fill() only after batch tracing all flakes.
     ctx.fill();
-}
-
-function resizeCanvas() {
-    // Re-size canvas
-    canvas.width = document.documentElement.clientWidth;
-    canvas.height = document.documentElement.clientHeight;
-    // Re-cache canvas dimensions
-    canvasDimensionsWidth = canvas.width;
-    canvasDimensionsHeight = canvas.height;
 }
 
 init();
