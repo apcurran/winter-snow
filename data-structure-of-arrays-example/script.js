@@ -28,9 +28,9 @@ function init() {
     ctx.globalAlpha = 0.7;
 
     flakeCount = Math.floor(canvasDimensionsWidth / 3);
-    xValues = new Int32Array(flakeCount); // (0 to canvasWidth) range
-    yValues = new Int32Array(flakeCount); // (0 to -canvasHeight)) range
-    rValues = new Int8Array(flakeCount); // (1 to 4) range
+    xValues = new Uint16Array(flakeCount); // (0 to canvasWidth) range
+    yValues = new Int16Array(flakeCount); // (0 to -canvasHeight)) range
+    rValues = new Uint8Array(flakeCount); // (1 to 4) range
     dxValues = new Float32Array(flakeCount); // (-2 to 2) range
     dyValues = new Float32Array(flakeCount); // (2 to 5) range
 
