@@ -55,11 +55,9 @@ function animate() {
         // for each snowflake...
         const base = i * FLAKE_DATA_CHUNK_SIZE;
         // update x position
-        // x += dx
-        flakeData[base + 0] += flakeData[base + 2];
+        const x = flakeData[base + 0] += flakeData[base + 2]; // x += dx
         // update y position
-        // y += dy
-        flakeData[base + 1] += flakeData[base + 3];
+        const y = flakeData[base + 1] += flakeData[base + 3]; // y += dy
         const radius = flakeData[base + 4];
 
         // if the snowflake reaches the bottom of the screen,
@@ -69,9 +67,9 @@ function animate() {
         }
 
         // ctx.moveTo(x, y)
-        ctx.moveTo(flakeData[base + 0], flakeData[base + 1]);
+        ctx.moveTo(x, y);
         // ctx.arc(x, y, radius, 0, Math.PI * 2, true)
-        ctx.arc(flakeData[base + 0], flakeData[base + 1], flakeData[base + 4], 0, Math.PI * 2, true);
+        ctx.arc(x, y, radius, 0, Math.PI * 2, true);
     }
 
     // Call ctx.fill() only after batch tracing all flakes prior (better performance)
