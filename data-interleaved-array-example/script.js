@@ -53,25 +53,25 @@ function animate() {
 
     for (let i = 0; i < flakeCount; i++) {
         // for each snowflake...
-        const currentFlakeBase = i * FLAKE_DATA_CHUNK_SIZE;
+        const base = i * FLAKE_DATA_CHUNK_SIZE;
         // update x position
         // x += dx
-        flakeData[currentFlakeBase + 0] += flakeData[currentFlakeBase + 2];
+        flakeData[base + 0] += flakeData[base + 2];
         // update y position
         // y += dy
-        flakeData[currentFlakeBase + 1] += flakeData[currentFlakeBase + 3];
-        const radius = flakeData[currentFlakeBase + 4];
+        flakeData[base + 1] += flakeData[base + 3];
+        const radius = flakeData[base + 4];
 
         // if the snowflake reaches the bottom of the screen,
         // reset to above the top
-        if (flakeData[currentFlakeBase + 1] + radius > canvasDimensionsHeight) {
+        if (flakeData[base + 1] + radius > canvasDimensionsHeight) {
             resetFlake(i);
         }
 
         // ctx.moveTo(x, y)
-        ctx.moveTo(flakeData[currentFlakeBase + 0], flakeData[currentFlakeBase + 1]);
+        ctx.moveTo(flakeData[base + 0], flakeData[base + 1]);
         // ctx.arc(x, y, radius, 0, Math.PI * 2, true)
-        ctx.arc(flakeData[currentFlakeBase + 0], flakeData[currentFlakeBase + 1], flakeData[currentFlakeBase + 4], 0, Math.PI * 2, true);
+        ctx.arc(flakeData[base + 0], flakeData[base + 1], flakeData[base + 4], 0, Math.PI * 2, true);
     }
 
     // Call ctx.fill() only after batch tracing all flakes prior (better performance)
