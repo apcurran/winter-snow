@@ -59,8 +59,10 @@ function animate() {
 
         // if the snowflake reaches the bottom of the screen,
         // reset to above the top
-        if (y + radius > canvasDimensionsHeight) {
+        if (y - radius > canvasDimensionsHeight) {
             resetFlake(i);
+
+            continue;
         }
 
         // ctx.moveTo(x, y)
