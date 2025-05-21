@@ -52,17 +52,14 @@ function animate() {
     ctx.beginPath();
 
     for (let i = 0; i < flakeCount; i++) {
-        // for each snowflake...
         const base = i * FLAKE_DATA_CHUNK_SIZE;
-        // update x position
         const x = flakeData[base + 0] += flakeData[base + 2]; // x += dx
-        // update y position
         const y = flakeData[base + 1] += flakeData[base + 3]; // y += dy
         const radius = flakeData[base + 4];
 
         // if the snowflake reaches the bottom of the screen,
         // reset to above the top
-        if (flakeData[base + 1] + radius > canvasDimensionsHeight) {
+        if (y + radius > canvasDimensionsHeight) {
             resetFlake(i);
         }
 
