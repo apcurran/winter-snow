@@ -65,9 +65,7 @@ function animate() {
             continue;
         }
 
-        // ctx.moveTo(x, y)
         ctx.moveTo(x, y);
-        // ctx.arc(x, y, radius, 0, Math.PI * 2, true)
         ctx.arc(x, y, radius, 0, Math.PI * 2, true);
     }
 
