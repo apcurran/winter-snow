@@ -65,6 +65,17 @@ function animate() {
             continue;
         }
 
+        // CULLING
+        // completely skip rendering snowflakes outside of the viewport
+        if (
+            x + radius < 0 || // off left
+            x - radius > canvasDimensionsWidth || // off right
+            y + radius < 0 || // off top
+            y - radius > canvasDimensionsHeight // off bottom
+        ) {
+            continue;
+        }
+
         ctx.moveTo(x, y);
         ctx.arc(x, y, radius, 0, Math.PI * 2, true);
     }
