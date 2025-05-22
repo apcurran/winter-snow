@@ -1,15 +1,18 @@
 # Winter Snowfall
 
-## Features:
+## Three data layout designs for the same project:
+[Array of structures (AoS)](https://apcurran.github.io/winter-snow/data-array-of-structures-example)
 
-[Array of structures approach (AoS) to data-design](https://apcurran.github.io/winter-snow/data-array-of-structures-example)
+[Structure of arrays (SoA)](https://apcurran.github.io/winter-snow/data-structure-of-arrays-example)
 
-[Structure of arrays approach (SoA) to data-design](https://apcurran.github.io/winter-snow/data-structure-of-arrays-example)
+[Structure of arrays (SoA) with a single interleaved array](https://apcurran.github.io/winter-snow/data-interleaved-array-example)
+    - This one-dimensional array data design has optimal cache-friendlieness for the CPU and memory
 
-* Vanilla JS with Canvas API
+### Features:
+- Vanilla JS with Canvas API
 
-* ES6 Class syntax for snowflake objects
+- ES6 Class syntax for snowflake objects
 
-* Dynamic snowflakes generated based upon window width
+- Dynamic snowflakes generated based upon window width
 
-* Randomized snowflakes with unique values
+- Randomized snowflakes with unique values
